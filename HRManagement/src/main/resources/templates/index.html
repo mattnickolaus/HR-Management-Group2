@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Employee Management</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+<div class="container my-4">
+  <!-- Display logged-in user's username -->
+  <div class="d-flex justify-content-between">
+    <div>
+      <p>Welcome, <strong th:text="${session.loggedInUser.username}"></strong></p>
+    </div>
+    <div>
+      <a th:href="@{/logout}" class="btn btn-secondary">Logout</a>
+    </div>
+  </div>
+  <a th:href="@{/showNewEmployeeForm}" class="btn btn-primary mb-3">Add Employee</a>
+  <h1>Employee List</h1>
+  <table class="table table-striped table-responsive-md">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Date of Birth</th>
+      <th>Position</th>
+      <th>Department</th>
+      <th>Salary</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="employee : ${listEmployees}">
+      <td th:text="${employee.name}"></td>
+      <td th:text="${employee.email}"></td>
+      <td th:text="${employee.dateOfBirth}"></td>
+      <td th:text="${employee.position}"></td>
+      <td th:text="${employee.department}"></td>
+      <td th:text="${employee.salary}"></td>
+      <td>
+        <a th:href="@{/showFormForUpdate/{id}(id=${employee.id})}" class="btn btn-primary">Update</a>
+        <a th:href="@{/deleteEmployee/{id}(id=${employee.id})}" class="btn btn-danger">Delete</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>
