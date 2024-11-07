@@ -1,6 +1,8 @@
 package com.buffet.hrmanagement.model;
 
 import jakarta.persistence.*;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
@@ -18,6 +20,7 @@ public class Employee {
     private String email;
 
     @Column(name="date_of_birth")
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     private LocalDate dateOfBirth;
 
     @Column(name="position")

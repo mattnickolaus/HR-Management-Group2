@@ -20,7 +20,11 @@
     </div>
     <div class="mb-3">
       <label for="dateOfBirth">Date of Birth:</label>
-      <input type="date" th:field="*{dateOfBirth}" class="form-control" required="true" />
+      <input type="date"
+             th:field="*{dateOfBirth}"
+             th:value="${#dates.format(dateOfBirth, 'yyyy-MM-dd')}"
+             class="form-control"
+             required="true" />
     </div>
     <div class="mb-3">
       <label for="position">Position:</label>
@@ -35,7 +39,7 @@
       <input type="number" th:field="*{salary}" class="form-control" placeholder="Salary" required="true" />
     </div>
     <button type="submit" class="btn btn-primary">Update Employee</button>
-    <a th:href="@{/{}}" class="btn btn-secondary">Cancel</a>
+    <a th:href="@{/}" class="btn btn-secondary">Cancel</a>
   </form>
 </div>
 </body>
