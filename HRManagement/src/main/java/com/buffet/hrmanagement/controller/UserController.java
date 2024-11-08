@@ -14,7 +14,7 @@ public class UserController {
     private UserService userService;
 
     @GetMapping("/login")
-    public String showLoginPage(){
+    public String showLoginPage() {
         return "login";
     }
 
@@ -22,22 +22,30 @@ public class UserController {
     public String login(@RequestParam("username") String username,
                         @RequestParam("password") String password,
                         HttpSession session,
-                        Model model){
-
+                        Model model) {
         User user = userService.findByUsername(username);
-        if (user != null && user.getPassword().equals(password)){
+        if (user != null && user.getPassword().equals(password)) {
+            // Store user information in session
             session.setAttribute("loggedInUser", user);
-            return "redirect:/";
+            return "redirect:/"; // Redirect to the navigation menu
         } else {
-            model.addAttribute("error", "Invalid username or password");
+            model.addAttribute("error", "Invalid username or password.");
             return "login";
         }
     }
 
     @GetMapping("/logout")
-    public String logout(HttpSession session){
+    public String logout(HttpSession session) {
         session.invalidate();
         return "redirect:/login";
+    }
+
+    @GetMapping("/")
+    public String showHomePage(HttpSession session) {
+        if (session.getAttribute("loggedInUser") == null) {
+            return "redirect:/login";
+        }
+        return "index"; // Show the navigation menu
     }
 
     @GetMapping("/register")

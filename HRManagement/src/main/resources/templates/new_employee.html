@@ -8,7 +8,7 @@
 <body>
 <div class="container my-4">
   <h2>Add New Employee</h2>
-  <form action="#" th:action="@{/saveEmployee}" th:object="${employee}" method="post">
+  <form action="#" th:action="@{/employees/saveEmployee}" th:object="${employee}" method="post">
     <div class="mb-3">
       <label for="name">Name:</label>
       <input type="text" th:field="*{name}" class="form-control" placeholder="Name" required="true" />

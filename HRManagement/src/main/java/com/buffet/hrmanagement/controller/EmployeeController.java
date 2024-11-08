@@ -1,7 +1,6 @@
 package com.buffet.hrmanagement.controller;
 
 import com.buffet.hrmanagement.model.Employee;
-import com.buffet.hrmanagement.model.User;
 import com.buffet.hrmanagement.service.EmployeeService;
 
 import jakarta.servlet.http.HttpSession;
@@ -16,18 +15,20 @@ import org.springframework.data.domain.Page;
 import java.util.List;
 
 @Controller
+@RequestMapping("/employees") // All URLs in this controller will be prefixed with /employees
 public class EmployeeController {
 
     @Autowired
     private EmployeeService employeeService;
 
-    @GetMapping("/")
-    public String index(Model model, HttpSession session) {
+    @GetMapping("")
+    public String viewEmployeesPage(Model model, HttpSession session) {
         if (session.getAttribute("loggedInUser") == null) {
             return "redirect:/login";
         }
+
         model.addAttribute("listEmployees", employeeService.getAllEmployees());
-        return "index";
+        return "employees";
     }
 
     @GetMapping("/showNewEmployeeForm")
@@ -48,11 +49,11 @@ public class EmployeeController {
         }
 
         employeeService.saveEmployee(employee);
-        return "redirect:/";
+        return "redirect:/employees";
     }
 
     @GetMapping("/showFormForUpdate/{id}")
-    public String showFormForUpdate(@PathVariable (value = "id") Long id, Model model, HttpSession session) {
+    public String showFormForUpdate(@PathVariable(value = "id") Long id, Model model, HttpSession session) {
         if (session.getAttribute("loggedInUser") == null) {
             return "redirect:/login";
         }
@@ -63,12 +64,12 @@ public class EmployeeController {
     }
 
     @GetMapping("/deleteEmployee/{id}")
-    public String deleteEmployee(@PathVariable (value = "id") Long id, HttpSession session) {
+    public String deleteEmployee(@PathVariable(value = "id") Long id, HttpSession session) {
         if (session.getAttribute("loggedInUser") == null) {
             return "redirect:/login";
         }
 
         this.employeeService.deleteEmployeeById(id);
-        return "redirect:/";
+        return "redirect:/employees";
     }
 }

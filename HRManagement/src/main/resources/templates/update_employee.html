@@ -8,7 +8,7 @@
 <body>
 <div class="container my-4">
   <h2>Update Employee</h2>
-  <form action="#" th:action="@{/saveEmployee}" th:object="${employee}" method="post">
+  <form action="#" th:action="@{/employees/saveEmployee}" th:object="${employee}" method="post">
     <input type="hidden" th:field="*{id}" />
     <div class="mb-3">
       <label for="name">Name:</label>
