@@ -12,8 +12,8 @@ public class PayrollPeriod {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name="state_date", nullable = false)
-    private LocalDate stateDate;
+    @Column(name="start_date", nullable = false)
+    private LocalDate startDate;
 
     @Column(name="end_date", nullable = false)
     private LocalDate endDate;
@@ -27,8 +27,8 @@ public class PayrollPeriod {
     // Constructors, getter, and setter
     public PayrollPeriod() {}
 
-    public PayrollPeriod(LocalDate stateDate, LocalDate endDate, String periodName) {
-        this.stateDate = stateDate;
+    public PayrollPeriod(LocalDate startDate, LocalDate endDate, String periodName) {
+        this.startDate = startDate;
         this.endDate = endDate;
         this.periodName = periodName;
     }
@@ -42,12 +42,12 @@ public class PayrollPeriod {
         this.id = id;
     }
 
-    public LocalDate getStateDate() {
-        return stateDate;
+    public LocalDate getStartDate() {
+        return startDate;
     }
 
-    public void setStateDate(LocalDate stateDate) {
-        this.stateDate = stateDate;
+    public void setStartDate(LocalDate stateDate) {
+        this.startDate = stateDate;
     }
 
     public LocalDate getEndDate() {
