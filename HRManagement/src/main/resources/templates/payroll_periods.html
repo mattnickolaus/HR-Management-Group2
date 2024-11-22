@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Payroll Periods</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+<div class="container my-4">
+  <h2>Payroll Periods</h2>
+  <a th:href="@{/payroll/newPeriod}" class="btn btn-primary mb-3">Create New Payroll Period</a>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Period Name</th>
+      <th>Start Date</th>
+      <th>End Date</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="period : ${payrollPeriods}">
+      <td th:text="${period.periodName}"></td>
+      <td th:text="${period.startDate}"></td>
+      <td th:text="${period.endDate}"></td>
+      <td>
+        <a th:href="@{/payroll/process/{id}(id=${period.id})}" class="btn btn-success">Process Payroll</a>
+        <a th:href="@{/payroll/records/{id}(id=${period.id})}" class="btn btn-info">View Records</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <a th:href="@{/}" class="btn btn-secondary">Home</a>
+</div>
+</body>
+</html>
