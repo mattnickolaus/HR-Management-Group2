@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Payroll Records</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+<div class="container my-4">
+  <h2>Payroll Records for <span th:text="${payrollPeriod.periodName}"></span></h2>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Employee</th>
+      <th>Gross Salary</th>
+      <th>Tax Deductions</th>
+      <th>Benefit Deductions</th>
+      <th>Adjustments</th>
+      <th>Net Salary</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="record : ${payrollRecords}">
+      <td th:text="${record.employee.name}"></td>
+      <td th:text="${record.grossSalary}"></td>
+      <td th:text="${record.taxDeductions}"></td>
+      <td th:text="${record.benefitsDeductions}"></td>
+      <td th:text="${record.adjustments}"></td>
+      <td th:text="${record.netSalary}"></td>
+      <td>
+        <a th:href="@{/payroll/adjust/{id}(id=${record.id})}" class="btn btn-primary">Adjust</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <a th:href="@{/payroll}" class="btn btn-secondary">Back to Payroll Periods</a>
+</div>
+</body>
+</html>
+

@@ -18,7 +18,7 @@ public class UserController {
         return "login";
     }
 
-    @PostMapping("/login")
+    @PostMapping("/login") // Logic for logging in
     public String login(@RequestParam("username") String username,
                         @RequestParam("password") String password,
                         HttpSession session,
@@ -34,13 +34,13 @@ public class UserController {
         }
     }
 
-    @GetMapping("/logout")
+    @GetMapping("/logout") // Logs out from session
     public String logout(HttpSession session) {
         session.invalidate();
         return "redirect:/login";
     }
 
-    @GetMapping("/")
+    @GetMapping("/") // Shows main menu/home
     public String showHomePage(HttpSession session) {
         if (session.getAttribute("loggedInUser") == null) {
             return "redirect:/login";
@@ -48,14 +48,14 @@ public class UserController {
         return "index"; // Show the navigation menu
     }
 
-    @GetMapping("/register")
+    @GetMapping("/register") // Shows registration page
     public String showRegistrationPage(Model model) {
         User user = new User();
         model.addAttribute("user", user);
         return "register";
     }
 
-    @PostMapping("/register")
+    @PostMapping("/register") // New employee registration logic
     public String register(@ModelAttribute("user") User user, Model model) {
         if (userService.findByUsername(user.getUsername()) != null) {
             model.addAttribute("error", "Username already exists.");

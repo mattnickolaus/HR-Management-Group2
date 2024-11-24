@@ -21,54 +21,34 @@ public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
 
-    @GetMapping("")
-    public String viewEmployeesPage(Model model, HttpSession session) {
-        if (session.getAttribute("loggedInUser") == null) {
-            return "redirect:/login";
-        }
-
+    @GetMapping("") // List all employees
+    public String viewEmployeesPage(Model model) {
         model.addAttribute("listEmployees", employeeService.getAllEmployees());
         return "employees";
     }
 
-    @GetMapping("/showNewEmployeeForm")
-    public String showNewEmployeeForm(Model model, HttpSession session) {
-        if (session.getAttribute("loggedInUser") == null) {
-            return "redirect:/login";
-        }
-
+    @GetMapping("/showNewEmployeeForm") // Shows new employee form
+    public String showNewEmployeeForm(Model model) {
         Employee employee = new Employee();
         model.addAttribute("employee", employee);
         return "new_employee";
     }
 
-    @PostMapping("/saveEmployee")
-    public String saveEmployee(@ModelAttribute("employee") Employee employee, HttpSession session) {
-        if (session.getAttribute("loggedInUser") == null) {
-            return "redirect:/login";
-        }
-
+    @PostMapping("/saveEmployee") // Saves a new or updated employee
+    public String saveEmployee(@ModelAttribute("employee") Employee employee) {
         employeeService.saveEmployee(employee);
         return "redirect:/employees";
     }
 
-    @GetMapping("/showFormForUpdate/{id}")
-    public String showFormForUpdate(@PathVariable(value = "id") Long id, Model model, HttpSession session) {
-        if (session.getAttribute("loggedInUser") == null) {
-            return "redirect:/login";
-        }
-
+    @GetMapping("/showFormForUpdate/{id}") // Shows form to update employee
+    public String showFormForUpdate(@PathVariable(value = "id") Long id, Model model) {
         Employee employee = employeeService.getEmployeeById(id);
         model.addAttribute("employee", employee);
         return "update_employee";
     }
 
-    @GetMapping("/deleteEmployee/{id}")
-    public String deleteEmployee(@PathVariable(value = "id") Long id, HttpSession session) {
-        if (session.getAttribute("loggedInUser") == null) {
-            return "redirect:/login";
-        }
-
+    @GetMapping("/deleteEmployee/{id}") // Delete employee by ID
+    public String deleteEmployee(@PathVariable(value = "id") Long id) {
         this.employeeService.deleteEmployeeById(id);
         return "redirect:/employees";
     }
