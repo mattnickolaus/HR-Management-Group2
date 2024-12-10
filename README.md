@@ -1,7 +1,7 @@
 # HR-Management-Group2
 HR Management Spring Boot application for IST 412 project. 
 
-## Implementation / Refactoring Class Completed by:
+## Implementation Completed by:
 Matthew Nickolaus: 
 - PayrollController
 - Payroll period
@@ -24,5 +24,8 @@ Samuel Yudhistira:
 Jennifer and Hunter
 - Error Handling
 - Passwords
+
+=======
+
 
 ![ExampleImage](example_image.png)
