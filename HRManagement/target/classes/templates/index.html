@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>HR Management - Home</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+<div class="container my-4">
+  <div class="d-flex justify-content-between">
+    <div>
+      <h1>Buffet Inc.</h1>
+      <h2>HR Management System</h2>
+    </div>
+    <div>
+      <p>Welcome, <strong th:text="${session.loggedInUser.username}"></strong>!</p>
+      <a th:href="@{/logout}" class="btn btn-secondary mb-3">Logout</a>
+    </div>
+  </div>
+  <hr>
+  <br>
+  <h3>Navigation Menu</h3>
+  <ul class="list-group">
+    <li class="list-group-item">
+      <a th:href="@{/employees}" class="btn btn-link">Manage Employee Information</a>
+    </li>
+    <li class="list-group-item">
+      <a th:href="@{/payroll}" class="btn btn-link">Process Payroll</a>
+    </li>
+    <!-- Future use cases will be added here -->
+  </ul>
+</div>
+</body>
+</html>

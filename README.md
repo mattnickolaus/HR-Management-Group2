@@ -1,7 +1,7 @@
 # HR-Management-Group2
 HR Management Spring Boot application for IST 412 project. 
 
-## Implementation / Refactoring Class Completed by:
+## Implementation Completed by:
 Matthew Nickolaus: 
 - PayrollController
 - Payroll period
@@ -13,6 +13,19 @@ Matthew Nickolaus:
 - adjust_payroll_records.html
 - payroll_periods.html
 - payroll_records.html
+
+## Refactoring by:
+Samuel Yudhistira:
+- Confirmation when deleting employees
+- Added comments to some sections of code
+- Created interceptor class for authentication check
+
+## Refactoring by:
+Jennifer and Hunter
+- Error Handling
+- Passwords
+
+=======
 
 
 ![ExampleImage](example_image.png)

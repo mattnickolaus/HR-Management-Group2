@@ -9,16 +9,20 @@
 <div class="container my-4">
   <h2>Update Employee</h2>
   <form action="#" th:action="@{/employees/saveEmployee}" th:object="${employee}" method="post">
+    <!-- Employee hidden ID field -->
     <input type="hidden" th:field="*{id}" />
+    <!-- Employee name field -->
     <div class="mb-3">
       <label for="name">Name:</label>
       <input type="text" th:field="*{name}" class="form-control" placeholder="Name" required="true" />
     </div>
+    <!-- Employee email field -->
     <div class="mb-3">
       <label for="email">Email:</label>
       <input type="email" th:field="*{email}" class="form-control" placeholder="Email" required="true" />
     </div>
     <div class="mb-3">
+      <!-- Employee date of birth field -->
       <label for="dateOfBirth">Date of Birth:</label>
       <input type="date"
              th:field="*{dateOfBirth}"
@@ -26,20 +30,23 @@
              class="form-control"
              required="true" />
     </div>
+    <!-- Employee position field -->
     <div class="mb-3">
       <label for="position">Position:</label>
       <input type="text" th:field="*{position}" class="form-control" placeholder="Position" required="true" />
     </div>
+    <!-- Employee department field -->
     <div class="mb-3">
       <label for="department">Department:</label>
       <input type="text" th:field="*{department}" class="form-control" placeholder="Department" required="true" />
     </div>
+    <!-- Employee salary field -->
     <div class="mb-3">
       <label for="salary">Salary:</label>
       <input type="number" th:field="*{salary}" class="form-control" placeholder="Salary" required="true" />
     </div>
     <button type="submit" class="btn btn-primary">Update Employee</button>
-    <a th:href="@{/}" class="btn btn-secondary">Cancel</a>
+    <a th:href="@{/employees}" class="btn btn-secondary">Cancel</a>
   </form>
 </div>
 </body>
