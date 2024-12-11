@@ -14,6 +14,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
 
 @Controller
 @RequestMapping("/leaves")
@@ -32,9 +34,23 @@ public class LeaveRequestController {
         }
 
         List<LeaveRequest> pendingRequests = leaveRequestService.getPendingLeaveRequests();
+
+        // Create a map to hold employee details for each leave request
+        Map<Long, Employee> employeeMap = new HashMap<>();
+        for (LeaveRequest request : pendingRequests) {
+            Employee employee = employeeService.getEmployeeById(request.getEmployeeId());
+            if (employee != null) {
+                employeeMap.put(request.getEmployeeId(), employee);
+            }
+        }
+
         model.addAttribute("pendingRequests", pendingRequests);
+        model.addAttribute("employeeMap", employeeMap);
+
         return "leave_requests";
     }
+
+
 
     @GetMapping("/approve/{id}")
     public String approveLeaveRequest(@PathVariable("id") Long id, HttpSession session) {

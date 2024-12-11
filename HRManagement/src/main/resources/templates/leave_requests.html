@@ -8,9 +8,14 @@
 <body>
 <div class="container my-4">
   <h2>Pending Leave Requests</h2>
+  <div class="mb-3">
+    <!-- Button to navigate back to the main index page -->
+    <a th:href="@{/}" class="btn btn-secondary">Back to Dashboard</a>
+  </div>
   <table class="table table-striped">
     <thead>
     <tr>
+      <th>Employee ID</th>
       <th>Employee Name</th>
       <th>Leave Type</th>
       <th>Start Date</th>
@@ -22,25 +27,20 @@
     </thead>
     <tbody>
     <tr th:each="request : ${pendingRequests}">
-      <td th:text="${request.employeeId}"></td>
-      <td th:text="${request.leaveType}"></td>
-      <td th:text="${request.startDate}"></td>
-      <td th:text="${request.endDate}"></td>
-      <td th:text="${request.status}"></td>
+      <td th:text="${request.employeeId}">Employee ID</td>
+      <td th:text="${employeeMap[request.employeeId]?.name}">Employee Name</td>
+      <td th:text="${request.leaveType}">Leave Type</td>
+      <td th:text="${request.startDate}">Start Date</td>
+      <td th:text="${request.endDate}">End Date</td>
+      <td th:text="${request.status}">Status</td>
+      <td th:text="${request.comments}">Comments</td>
       <td>
-        <form action="#" th:action="@{/leaves/comment/{id}(id=${request.id})}" method="post">
-          <textarea name="comments" class="form-control" th:text="${request.comments}" rows="2"></textarea>
-          <button type="submit" class="btn btn-secondary mt-1">Save Comment</button>
-        </form>
-      </td>
-      <td>
-        <a th:href="@{/leaves/approve/{id}(id=${request.id})}" class="btn btn-success">Approve</a>
-        <a th:href="@{/leaves/deny/{id}(id=${request.id})}" class="btn btn-danger">Deny</a>
+        <a th:href="@{/leaves/approve/{id}(id=${request.id})}" class="btn btn-success btn-sm">Approve</a>
+        <a th:href="@{/leaves/deny/{id}(id=${request.id})}" class="btn btn-danger btn-sm">Deny</a>
       </td>
     </tr>
     </tbody>
   </table>
-  <a th:href="@{/}" class="btn btn-secondary">Back to Home</a>
 </div>
 </body>
 </html>
