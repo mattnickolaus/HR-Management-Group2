@@ -25,7 +25,6 @@ Jennifer and Hunter
 - Error Handling
 - Passwords
 
-=======
 
 
 ![ExampleImage](example_image.png)

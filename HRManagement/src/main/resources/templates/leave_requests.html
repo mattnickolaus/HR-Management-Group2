@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Leave Requests</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+<div class="container my-4">
+  <h2>Pending Leave Requests</h2>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Employee Name</th>
+      <th>Leave Type</th>
+      <th>Start Date</th>
+      <th>End Date</th>
+      <th>Status</th>
+      <th>Comments</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="request : ${pendingRequests}">
+      <td th:text="${request.employeeId}"></td>
+      <td th:text="${request.leaveType}"></td>
+      <td th:text="${request.startDate}"></td>
+      <td th:text="${request.endDate}"></td>
+      <td th:text="${request.status}"></td>
+      <td>
+        <form action="#" th:action="@{/leaves/comment/{id}(id=${request.id})}" method="post">
+          <textarea name="comments" class="form-control" th:text="${request.comments}" rows="2"></textarea>
+          <button type="submit" class="btn btn-secondary mt-1">Save Comment</button>
+        </form>
+      </td>
+      <td>
+        <a th:href="@{/leaves/approve/{id}(id=${request.id})}" class="btn btn-success">Approve</a>
+        <a th:href="@{/leaves/deny/{id}(id=${request.id})}" class="btn btn-danger">Deny</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <a th:href="@{/}" class="btn btn-secondary">Back to Home</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Submit Leave Request</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+<div class="container my-4">
+  <h2>Submit Leave Request</h2>
+  <form action="#" th:action="@{/leaves/submit}" th:object="${leaveRequest}" method="post">
+    <div class="mb-3">
+      <label for="employeeId">Employee ID:</label>
+      <input type="number" th:field="*{employeeId}" class="form-control" placeholder="Enter Employee ID" required />
+    </div>
+    <div class="mb-3">
+      <label for="leaveType">Leave Type:</label>
+      <select th:field="*{leaveType}" class="form-control" required>
+        <option value="" disabled selected>Select leave type</option>
+        <option value="Vacation Leave">Vacation Leave</option>
+        <option value="Sick Leave">Sick Leave</option>
+        <option value="Maternity/Paternity Leave">Maternity/Paternity Leave</option>
+        <option value="Other">Other</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="startDate">Start Date:</label>
+      <input type="date" th:field="*{startDate}" class="form-control" required>
+    </div>
+    <div class="mb-3">
+      <label for="endDate">End Date:</label>
+      <input type="date" th:field="*{endDate}" class="form-control" required>
+    </div>
+    <div class="mb-3">
+      <label for="comments">Comments (Optional):</label>
+      <textarea th:field="*{comments}" class="form-control" placeholder="Reason for leave"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit Request</button>
+    <a th:href="@{/}" class="btn btn-secondary">Cancel</a>
+  </form>
+</div>
+</body>
+</html>

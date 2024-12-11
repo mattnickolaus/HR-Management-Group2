@@ -9,13 +9,16 @@
 <div class="container my-4">
   <div class="d-flex justify-content-between">
     <div>
+      <!-- Display user -->
       <p>Welcome, <strong th:text="${session.loggedInUser.username}"></strong></p>
     </div>
     <div>
+      <!-- Logout and Home links -->
       <a th:href="@{/logout}" class="btn btn-secondary">Logout</a>
       <a th:href="@{/}" class="btn btn-link">Home</a>
     </div>
   </div>
+  <!-- Button to navigate to new employee form -->
   <a th:href="@{/employees/showNewEmployeeForm}" class="btn btn-primary mb-3">Add Employee</a>
   <h1>Employee List</h1>
   <table class="table table-striped table-responsive-md">
@@ -31,6 +34,7 @@
     </tr>
     </thead>
     <tbody>
+    <!-- Loop list and show employee data -->
     <tr th:each="employee : ${listEmployees}">
       <td th:text="${employee.name}"></td>
       <td th:text="${employee.email}"></td>
@@ -39,7 +43,9 @@
       <td th:text="${employee.department}"></td>
       <td th:text="${employee.salary}"></td>
       <td>
+        <!-- Update button -->
         <a th:href="@{/employees/showFormForUpdate/{id}(id=${employee.id})}" class="btn btn-primary">Update</a>
+        <!-- Delete button with confirmation -->
         <a th:href="@{/employees/deleteEmployee/{id}(id=${employee.id})}" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this employee?')">Delete</a>
       </td>
     </tr>
