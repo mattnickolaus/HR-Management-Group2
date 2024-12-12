@@ -27,4 +27,5 @@ Jennifer and Hunter
 
 
 
+![Home Screen Images](home-screen-image.png)
 ![ExampleImage](example_image.png)
