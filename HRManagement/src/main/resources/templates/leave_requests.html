@@ -35,6 +35,7 @@
       <td th:text="${request.status}">Status</td>
       <td th:text="${request.comments}">Comments</td>
       <td>
+        o43
         <a th:href="@{/leaves/approve/{id}(id=${request.id})}" class="btn btn-success btn-sm">Approve</a>
         <a th:href="@{/leaves/deny/{id}(id=${request.id})}" class="btn btn-danger btn-sm">Deny</a>
       </td>
