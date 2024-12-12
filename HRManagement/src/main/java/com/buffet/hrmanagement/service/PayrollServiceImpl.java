@@ -95,4 +95,7 @@ public class PayrollServiceImpl implements PayrollService {
         return benefits;
     }
 
+    public List<PayrollRecord> getAllPayrollRecords() {
+        return payrollRecordRepository.findAll();
+    }
 }

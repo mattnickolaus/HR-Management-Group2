@@ -24,6 +24,7 @@
   <table class="table table-striped table-responsive-md">
     <thead>
     <tr>
+      <th>Employee Id</th>
       <th>Name</th>
       <th>Email</th>
       <th>Date of Birth</th>
@@ -36,6 +37,7 @@
     <tbody>
     <!-- Loop list and show employee data -->
     <tr th:each="employee : ${listEmployees}">
+      <td th:text="${employee.id}"></td>
       <td th:text="${employee.name}"></td>
       <td th:text="${employee.email}"></td>
       <td th:text="${employee.dateOfBirth}"></td>

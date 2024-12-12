@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Generate Reports</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+<div class="container my-4">
+  <h2>Generate CSV Reports</h2>
+  <form action="#" th:action="@{/reports/generate}" method="post">
+    <div class="mb-3">
+      <label for="dataType" class="form-label">Select Data Type:</label>
+      <select name="dataType" class="form-select" required>
+        <option value="" disabled selected>--Select--</option>
+        <option value="employees">Employees</option>
+        <option value="payroll">Payroll Records</option>
+        <option value="leaves">Leave Requests</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="employeeId" class="form-label">Employee ID (Optional):</label>
+      <input type="number" name="employeeId" class="form-control" placeholder="Enter Employee ID to filter" />
+      <small class="form-text text-muted">Leave blank to export all records.</small>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Generate CSV</button>
+    <a th:href="@{/}" class="btn btn-secondary">Back to Dashboard</a>
+  </form>
+</div>
+</body>
+</html>

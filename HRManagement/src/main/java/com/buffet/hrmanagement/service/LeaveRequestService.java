@@ -9,4 +9,5 @@ public interface LeaveRequestService {
     LeaveRequest getLeaveRequestById(Long id);
     LeaveRequest updateLeaveRequestStatus(Long id, String status, String comments);
     void saveLeaveRequest(LeaveRequest leaveRequest);
+    List<LeaveRequest> getAllLeaveRequests();
 }

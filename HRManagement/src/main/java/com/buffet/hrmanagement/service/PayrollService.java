@@ -12,4 +12,5 @@ public interface PayrollService {
     List<PayrollRecord> getPayrollRecordsByPeriod(Long payrollPeriodId);
     PayrollRecord getPayrollRecordById(Long id);
     PayrollRecord savePayrollRecord(PayrollRecord payrollRecord);
+    List<PayrollRecord> getAllPayrollRecords();
 }

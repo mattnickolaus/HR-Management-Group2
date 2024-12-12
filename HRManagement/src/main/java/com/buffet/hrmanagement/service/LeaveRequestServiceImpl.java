@@ -36,4 +36,9 @@ public class LeaveRequestServiceImpl implements LeaveRequestService {
     public void saveLeaveRequest(LeaveRequest leaveRequest) {
         leaveRequestRepository.save(leaveRequest);
     }
+
+    @Override
+    public List<LeaveRequest> getAllLeaveRequests() {
+        return leaveRequestRepository.findAll();
+    }
 }
