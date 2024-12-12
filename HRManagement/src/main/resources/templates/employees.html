@@ -4,21 +4,33 @@
   <meta charset="UTF-8">
   <title>Employee Management</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Bootstrap Icons (optional) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 </head>
 <body>
 <div class="container my-4">
-  <div class="d-flex justify-content-between">
+  <div class="d-flex justify-content-between navbar bg-white" style="box-shadow: 0 3px #d6d4d4;">
     <div>
-      <!-- Display user -->
-      <p>Welcome, <strong th:text="${session.loggedInUser.username}"></strong></p>
+      <h1>Buffet Inc.</h1>
+      <h2>HR Management System</h2>
     </div>
-    <div>
-      <!-- Logout and Home links -->
-      <a th:href="@{/logout}" class="btn btn-secondary">Logout</a>
-      <a th:href="@{/}" class="btn btn-link">Home</a>
+    <div class="dropdown">
+      <a th:href="@{/}" class="btn btn-secondary" style="margin-right: 50px;">Back to Dashboard</a>
+      <!-- Profile Icon Button -->
+      <button class="btn btn-light" type="button" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="border:none;">
+        <i class="bi bi-person-circle" style="font-size: 1.5rem; color: #333;"></i>
+      </button>
+      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+        <li class="dropdown-header">
+          Welcome, <strong th:text="${session.loggedInUser.username}"></strong>!
+        </li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" th:href="@{/logout}">Logout</a></li>
+      </ul>
     </div>
   </div>
   <!-- Button to navigate to new employee form -->
+  <br>
   <a th:href="@{/employees/showNewEmployeeForm}" class="btn btn-primary mb-3">Add Employee</a>
   <h1>Employee List</h1>
   <table class="table table-striped table-responsive-md">
@@ -54,5 +66,7 @@
     </tbody>
   </table>
 </div>
+<!-- Bootstrap JS (for dropdown functionality) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -3,41 +3,88 @@
 <head>
   <meta charset="UTF-8">
   <title>HR Management - Home</title>
+  <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Bootstrap Icons (optional) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+  <style>
+    .hr-nav-menus {
+      background-color: white;
+      width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+      border-radius: 10px;
+      border: 1px solid #d6d4d4;
+    }
+    .hr-nav-menus h4 {
+      padding-top: 10px;
+      padding-bottom: 5px;
+      padding-left: 10px;
+    }
+
+  </style>
 </head>
 <body>
 <div class="container my-4">
-  <div class="d-flex justify-content-between">
+  <div class="d-flex justify-content-between navbar bg-white" style="box-shadow: 0 3px #d6d4d4;">
     <div>
       <h1>Buffet Inc.</h1>
       <h2>HR Management System</h2>
     </div>
-    <div>
-      <p>Welcome, <strong th:text="${session.loggedInUser.username}"></strong>!</p>
-      <a th:href="@{/logout}" class="btn btn-secondary mb-3">Logout</a>
+    <div class="dropdown">
+      <!-- Profile Icon Button -->
+      <button class="btn btn-light" type="button" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="border:none;">
+        <i class="bi bi-person-circle" style="font-size: 1.5rem; color: #333;"></i>
+      </button>
+      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+        <li class="dropdown-header">
+          Welcome, <strong th:text="${session.loggedInUser.username}"></strong>!
+        </li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" th:href="@{/logout}">Logout</a></li>
+      </ul>
     </div>
   </div>
-  <hr>
   <br>
-  <h3>Navigation Menu</h3>
-  <ul class="list-group">
-    <li class="list-group-item">
-      <a th:href="@{/employees}" class="btn btn-link">Manage Employee Information</a>
-    </li>
-    <li class="list-group-item">
-      <a th:href="@{/payroll}" class="btn btn-link">Process Payroll</a>
-    </li>
-    <li class="list-group-item">
-      <a th:href="@{/leaves}" class="btn btn-link">Approve Leave Requests</a>
-    </li>
-    <!-- Future use cases will be added here -->
-    <li class="list-group-item">
-      <a th:href="@{/leaves/submit}" class="btn btn-link">Submit Leave Request</a>
-    </li>
-    <li class="list-group-item">
-      <a th:href="@{/reports}" class="btn btn-link">Create Reports</a>
-    </li>
-  </ul>
+  <img src="https://img.freepik.com/free-vector/winter-city-park-horizontal-illustration-with-empty-benches-snowy-trees-cartoon-vector-illustration_1284-82134.jpg"
+       alt="Winter Trees in a park"
+       style="width:100%; height: 200px; object-fit:cover; object-position:0 80%;">
+
+  <div style="background-color: #edebeb">
+    <br>
+    <h3 style="padding-left: 10px; padding-bottom: 5px;">Good Morning, <strong th:text="${session.loggedInUser.username}"></strong>!</h3>
+    <div class="hr-nav-menus">
+      <h4>Manager Navigation Menu</h4>
+      <ul class="list-group">
+        <li class="list-group-item">
+          <a th:href="@{/employees}" class="btn btn-link">Manage Employee Information</a>
+        </li>
+        <li class="list-group-item">
+          <a th:href="@{/payroll}" class="btn btn-link">Process Payroll</a>
+        </li>
+        <li class="list-group-item">
+          <a th:href="@{/leaves}" class="btn btn-link">Approve Leave Requests</a>
+        </li>
+        <li class="list-group-item">
+          <a th:href="@{/reports}" class="btn btn-link">Create Reports</a>
+        </li>
+      </ul>
+    </div>
+    <br>
+    <div class="hr-nav-menus">
+      <h4>Personal Employee Actions</h4>
+      <ul class="list-group">
+        <li class="list-group-item">
+          <a th:href="@{/leaves/submit}" class="btn btn-link">Submit Leave Request</a>
+        </li>
+      </ul>
+    </div>
+    <br>
+  </div>
 </div>
+
+<!-- Bootstrap JS (for dropdown functionality) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
